@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STASH | DON'T STOP DIGGIN' | 2026.9.22–23 多摩センター</title>
+  <title>DIGOUT | KEEP ON HUNTING | 2026.11.14–15 下北沢</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -155,8 +155,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 90% 55% at 50% 0%, var(--wall) 0%, transparent 70%),
-        var(--concrete);
+        linear-gradient(to bottom, rgba(233,228,216,0.85) 0%, rgba(233,228,216,0.7) 50%, rgba(233,228,216,0.9) 100%),
+        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
     }
 
     /* Block lines – like concrete panel seams */
@@ -199,7 +199,7 @@
 
     /* Orange drip/shadow behind main title */
     .hero-title::after {
-      content: 'STASH';
+      content: 'DIGOUT';
       position: absolute;
       left: 5px; top: 5px;
       font-family: 'Bebas Neue', sans-serif;
@@ -434,6 +434,9 @@
       font-size: 0.82rem;
       color: var(--ink2);
       line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
     }
 
     .feat-body b {
@@ -443,6 +446,33 @@
       letter-spacing: 0.08em;
       color: var(--ink);
       margin-bottom: 0.1rem;
+    }
+
+    .feat-body .feat-text { flex: 1; }
+
+    .feat-body .feat-img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+      border: 2px solid var(--concrete2);
+    }
+
+    /* About section image */
+    .about-visual {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .about-visual img {
+      width: 100%;
+      max-width: 600px;
+      height: 220px;
+      object-fit: cover;
+      border: 2.5px solid var(--ink);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.15);
     }
 
     /* ── AUDIENCE TABS ── */
@@ -558,6 +588,15 @@
       margin-top: 1.5rem;
     }
 
+    .access-photo {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
+      margin-bottom: 1rem;
+    }
+
     .map-ph {
       background: var(--concrete2);
       border: 2.5px solid var(--ink);
@@ -645,6 +684,12 @@
       justify-content: center;
       font-size: 1.1rem;
       opacity: 0.35;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .ig-cell[style] {
+      opacity: 1;
     }
 
     .ig-handle {
@@ -743,7 +788,7 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="#hero" class="nav-logo">STASH</a>
+  <a href="#hero" class="nav-logo">DIGOUT</a>
   <ul class="nav-links">
     <li><a href="#about">概要</a></li>
     <li><a href="#audience">来場・出店</a></li>
@@ -768,23 +813,23 @@
   <div class="hero-bg"></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">// 一般社団法人 TMC presents</p>
+    <p class="hero-eyebrow">// 一般社団法人 SCL presents</p>
 
-    <h1 class="hero-title">STASH</h1>
+    <h1 class="hero-title">DIGOUT</h1>
 
-    <p class="hero-tagline">— Don't Stop Diggin' —</p>
+    <p class="hero-tagline">— Keep On Hunting —</p>
 
     <!-- 5 stickers -->
     <div class="sticker-row">
       <div class="stk stk-date">
         <span class="stk-label">Date</span>
-        <span class="stk-value">SEP 22–23</span>
-        <span class="stk-note">2026年9月22日・23日</span>
+        <span class="stk-value">NOV 14–15</span>
+        <span class="stk-note">2026年11月14日・15日</span>
       </div>
       <div class="stk stk-venue">
         <span class="stk-label">Venue</span>
-        <span class="stk-value">多摩センター</span>
-        <span class="stk-note">駅前歩道</span>
+        <span class="stk-value">下北沢</span>
+        <span class="stk-note">駅前広場</span>
       </div>
       <div class="stk-free">FREE ENTRY</div>
       <div class="stk stk-area">
@@ -806,9 +851,9 @@
   <div class="caution-stripe"></div>
   <div class="caution-ticker">
     <div class="ticker-track">
-      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
-      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
-      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+      <span class="ticker-seg">DIGOUT&emsp;×&emsp;KEEP ON HUNTING&emsp;×&emsp;2026.11.14–15&emsp;×&emsp;下北沢&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+      <span class="ticker-seg">DIGOUT&emsp;×&emsp;KEEP ON HUNTING&emsp;×&emsp;2026.11.14–15&emsp;×&emsp;下北沢&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+      <span class="ticker-seg">DIGOUT&emsp;×&emsp;KEEP ON HUNTING&emsp;×&emsp;2026.11.14–15&emsp;×&emsp;下北沢&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
     </div>
   </div>
   <div class="caution-stripe"></div>
@@ -819,16 +864,20 @@
   <p class="s-label rev">// Event Info</p>
   <h2 class="s-title rev d1">イベント概要</h2>
 
+  <div class="about-visual rev d1">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&auto=format&fit=crop&q=80" alt="ヴィンテージ古着ラック">
+  </div>
+
   <div class="sticker-board rev d2">
     <div class="board-stk">
       <div class="bs-tag">Date</div>
-      <div class="bs-val">SEP 22–23</div>
-      <div class="bs-note">2026年9月22日(火)・23日(水)</div>
+      <div class="bs-val">NOV 14–15</div>
+      <div class="bs-note">2026年11月14日(土)・15日(日)</div>
     </div>
     <div class="board-stk">
       <div class="bs-tag">Venue</div>
-      <div class="bs-val">多摩センター</div>
-      <div class="bs-note">駅前歩道</div>
+      <div class="bs-val">下北沢</div>
+      <div class="bs-note">駅前広場</div>
     </div>
     <div class="board-stk">
       <div class="bs-tag">Entry</div>
@@ -837,8 +886,8 @@
     </div>
     <div class="board-stk">
       <div class="bs-tag">Host</div>
-      <div class="bs-val">TMC</div>
-      <div class="bs-note">一般社団法人<br>タイムマシーンカンパニー</div>
+      <div class="bs-val">SCL</div>
+      <div class="bs-note">一般社団法人<br>シモキタカルチャーラボ</div>
     </div>
   </div>
 
@@ -846,29 +895,41 @@
     <li class="feat-item">
       <span class="feat-badge">VINTAGE</span>
       <div class="feat-body">
-        <b>VINTAGE MARKET</b>
-        古着・ヴィンテージ・ストリートアパレルが集結。掘れば掘るほど出会いがある。
+        <div class="feat-text">
+          <b>VINTAGE MARKET</b>
+          古着・ヴィンテージ・ストリートアパレルが集結。掘れば掘るほど出会いがある。
+        </div>
+        <img class="feat-img" src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&auto=format&fit=crop&q=80" alt="ヴィンテージデニム">
       </div>
     </li>
     <li class="feat-item">
       <span class="feat-badge">MUSIC</span>
       <div class="feat-body">
-        <b>LIVE MUSIC × DJ</b>
-        ストリートの空気を後押しするDJセット・ライブパフォーマンス。
+        <div class="feat-text">
+          <b>LIVE MUSIC × DJ</b>
+          ストリートの空気を後押しするDJセット・ライブパフォーマンス。
+        </div>
+        <img class="feat-img" src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=400&auto=format&fit=crop&q=80" alt="DJターンテーブル">
       </div>
     </li>
     <li class="feat-item">
       <span class="feat-badge">ART</span>
       <div class="feat-body">
-        <b>GRAFFITI × ART</b>
-        グラフィティ・ストリートアート展示。カルチャーが空間を染める。
+        <div class="feat-text">
+          <b>GRAFFITI × ART</b>
+          グラフィティ・ストリートアート展示。カルチャーが空間を染める。
+        </div>
+        <img class="feat-img" src="https://images.unsplash.com/photo-1561059488-916d69792237?w=400&auto=format&fit=crop&q=80" alt="グラフィティアート">
       </div>
     </li>
     <li class="feat-item">
       <span class="feat-badge">FOOD</span>
       <div class="feat-body">
-        <b>FOOD × DRINK</b>
-        フード・ドリンク出店あり。一日中いられる場所。
+        <div class="feat-text">
+          <b>FOOD × DRINK</b>
+          フード・ドリンク出店あり。一日中いられる場所。
+        </div>
+        <img class="feat-img" src="https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=400&auto=format&fit=crop&q=80" alt="フードトラック">
       </div>
     </li>
   </ul>
@@ -890,7 +951,7 @@
     <ul class="dot-list">
       <li>入場無料。誰でも気軽に来れる、西東京最大級の古着フェス。</li>
       <li>古着・ヴィンテージ・ストリートブランドが一堂に会するマーケット。</li>
-      <li>多摩センター駅から徒歩1分。電車でアクセス抜群。</li>
+      <li>下北沢駅から徒歩1分。電車でアクセス抜群。</li>
       <li>DJパフォーマンス・グラフィティ展示など、買い物を超えた体験。</li>
       <li>最新情報・天候対応はInstagramでリアルタイム発信。</li>
     </ul>
@@ -924,23 +985,26 @@
   <p class="s-label">// Location</p>
   <h2 class="s-title">アクセス</h2>
   <div class="access-wrap">
-    <div class="map-ph">
-      <div class="map-ph-icon">📍</div>
-      <span>Google Map</span>
-      <span>Placeholder</span>
+    <div style="flex: 1.2;">
+      <img class="access-photo" src="https://images.unsplash.com/photo-1554797589-7241bb691973?w=1200&auto=format&fit=crop&q=80" alt="下北沢の街並み">
+      <div class="map-ph">
+        <div class="map-ph-icon">📍</div>
+        <span>Google Map</span>
+        <span>Placeholder</span>
+      </div>
     </div>
     <div class="ac-cards">
       <div class="ac-card">
         <div class="ac-tag">Venue</div>
-        <div class="ac-val">多摩センター駅前歩道<br>東京都多摩市落合</div>
+        <div class="ac-val">下北沢 駅前広場<br>東京都世田谷区北沢</div>
       </div>
       <div class="ac-card">
         <div class="ac-tag">Train</div>
-        <div class="ac-val">小田急多摩線 / 京王相模原線<br>多摩センター駅 徒歩約1分</div>
+        <div class="ac-val">小田急線 / 京王井の頭線<br>下北沢駅 徒歩約1分</div>
       </div>
       <div class="ac-card">
         <div class="ac-tag">Schedule</div>
-        <div class="ac-val">2026年9月22日(火)・23日(水)<br>開催時間：[TBD]</div>
+        <div class="ac-val">2026年11月14日(土)・15日(日)<br>開催時間：[TBD]</div>
       </div>
     </div>
   </div>
@@ -952,27 +1016,31 @@
   <h2 class="ig-title">Stay<br>Plugged In.</h2>
   <p class="ig-body">最新情報・出店者紹介・当日の熱量は<br>Instagramでリアルタイム発信中。</p>
   <div class="ig-grid">
-    <div class="ig-cell">📷</div><div class="ig-cell">📷</div><div class="ig-cell">📷</div>
-    <div class="ig-cell">📷</div><div class="ig-cell">📷</div><div class="ig-cell">📷</div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=600&auto=format&fit=crop&q=80');"></div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1531685250784-7569952593d2?w=600&auto=format&fit=crop&q=80');"></div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=600&auto=format&fit=crop&q=80');"></div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=600&auto=format&fit=crop&q=80');"></div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80');"></div>
+    <div class="ig-cell" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&auto=format&fit=crop&q=80');"></div>
   </div>
-  <div class="ig-handle">@stashdig</div>
-  <a href="https://instagram.com/stashdig" target="_blank" rel="noopener" class="btn btn-yellow">フォローする</a>
+  <div class="ig-handle">@digoutmarket</div>
+  <a href="https://instagram.com/digoutmarket" target="_blank" rel="noopener" class="btn btn-yellow">フォローする</a>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="ft-logo">STASH</div>
-  <div class="ft-sub">— Don't Stop Diggin' —</div>
+  <div class="ft-logo">DIGOUT</div>
+  <div class="ft-sub">— Keep On Hunting —</div>
   <ul class="ft-nav">
     <li><a href="#about">概要</a></li>
     <li><a href="#audience">来場・出店</a></li>
     <li><a href="#access">アクセス</a></li>
     <li><a href="#instagram">Instagram</a></li>
-    <li><a href="https://stashdig.com" target="_blank" rel="noopener">stashdig.com</a></li>
+    <li><a href="https://digoutmarket.com" target="_blank" rel="noopener">digoutmarket.com</a></li>
   </ul>
   <div class="ft-copy">
-    © 2026 一般社団法人タイムマシーンカンパニー<br>
-    STASH — DON'T STOP DIGGIN' ／ 多摩センター駅前歩道 ／ 2026.9.22–23
+    © 2026 一般社団法人シモキタカルチャーラボ<br>
+    DIGOUT — KEEP ON HUNTING ／ 下北沢 駅前広場 ／ 2026.11.14–15
   </div>
 </footer>
 
