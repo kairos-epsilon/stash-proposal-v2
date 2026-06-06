@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STASH | DON'T STOP DIGGIN' | 2026.9.22–23 多摩センター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --concrete:  #e9e4d8;
+      --concrete2: #dad5c8;
+      --wall:      #f2ede3;
+      --ink:       #111111;
+      --ink2:      #2e2b27;
+      --ink3:      #4a4640;
+      --yellow:    #f5d000;
+      --orange:    #e84500;
+      --red:       #c8150a;
+      --white:     #ffffff;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--concrete);
+      color: var(--ink);
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Concrete noise */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(to bottom, rgba(233,228,216,0.96) 0%, transparent 100%);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 600;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mob-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--concrete);
+      z-index: 490;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2rem 3.5rem;
+      gap: 0.5rem;
+    }
+
+    .mob-overlay.open { display: flex; }
+
+    .mob-overlay::before {
+      content: '// MENU';
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--orange);
+    }
+
+    .mob-overlay a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 13vw, 5rem);
+      line-height: 1;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--concrete2);
+      padding-bottom: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .mob-overlay a:last-child { border-bottom: none; }
+    .mob-overlay a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% 0%, var(--wall) 0%, transparent 70%),
+        var(--concrete);
+    }
+
+    /* Block lines – like concrete panel seams */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, transparent 49.5%, rgba(0,0,0,0.04) 49.5%, rgba(0,0,0,0.04) 50%, transparent 50%),
+        linear-gradient(to right, transparent 49.5%, rgba(0,0,0,0.03) 49.5%, rgba(0,0,0,0.03) 50%, transparent 50%);
+      background-size: 100% 240px, 240px 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem 1.5rem 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      opacity: 0.55;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Big graffiti title – black on concrete */
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5.5rem, 28vw, 12rem);
+      line-height: 0.82;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Orange drip/shadow behind main title */
+    .hero-title::after {
+      content: 'STASH';
+      position: absolute;
+      left: 5px; top: 5px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: var(--orange);
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    .hero-tagline {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1rem, 4vw, 1.8rem);
+      color: var(--orange);
+      display: inline-block;
+      transform: rotate(-1.5deg);
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── STICKER CLUSTER ── */
+    .sticker-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    /* Base sticker */
+    .stk {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.08rem;
+      border: 2.5px solid var(--ink);
+      padding: 0.45rem 0.85rem;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+      background: var(--white);
+    }
+
+    .stk-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      opacity: 0.55;
+    }
+
+    .stk-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stk-note {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.6rem;
+      color: var(--ink3);
+      opacity: 0.5;
+    }
+
+    .stk-date { background: var(--yellow); transform: rotate(-1deg); }
+    .stk-venue { transform: rotate(0.8deg); }
+    .stk-area  { background: var(--orange); transform: rotate(-1.5deg); }
+    .stk-area .stk-label,
+    .stk-area .stk-value,
+    .stk-area .stk-note { color: var(--white); opacity: 1; }
+
+    .stk-free {
+      background: var(--red);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+      transform: rotate(3deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      color: var(--white);
+      padding: 0.4rem 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      align-self: center;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── CAUTION DIVIDER ── */
+    .caution-wrap { overflow: hidden; }
+
+    .caution-stripe {
+      height: 16px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--yellow) 0px, var(--yellow) 12px,
+        var(--ink)    12px, var(--ink)   24px
+      );
+    }
+
+    .caution-ticker {
+      background: var(--yellow);
+      padding: 0.5rem 0;
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: slide 24s linear infinite;
+    }
+
+    .ticker-seg {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      padding: 0 2.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-33.333%); }
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .bg-wall     { background: var(--wall); }
+    .bg-concrete { background: var(--concrete); }
+
+    .s-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.57rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .s-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 9vw, 5rem);
+      line-height: 0.87;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    /* ── STICKER BOARD ── */
+    .sticker-board {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .board-stk {
+      background: var(--white);
+      border: 2.5px solid var(--ink);
+      padding: 1.1rem 1.2rem;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.16);
+    }
+
+    .board-stk:nth-child(1) { transform: rotate(-0.6deg); }
+    .board-stk:nth-child(2) { transform: rotate(0.8deg); }
+    .board-stk:nth-child(3) { transform: rotate(0.5deg); background: var(--yellow); }
+    .board-stk:nth-child(4) { transform: rotate(-0.7deg); }
+
+    .bs-tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+    }
+
+    .bs-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+
+    .bs-note {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.67rem;
+      color: var(--ink3);
+      opacity: 0.58;
+      margin-top: 0.2rem;
+      line-height: 1.45;
+    }
+
+    /* Feature list */
+    .feat-list { list-style: none; }
+
+    .feat-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.88rem 0;
+      border-bottom: 1.5px solid var(--concrete2);
+    }
+
+    .feat-item:last-child { border-bottom: none; }
+
+    .feat-badge {
+      background: var(--ink);
+      color: var(--yellow);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.18rem 0.45rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .feat-body {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--ink2);
+      line-height: 1.7;
+    }
+
+    .feat-body b {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      margin-bottom: 0.1rem;
+    }
+
+    /* ── AUDIENCE TABS ── */
+    .tabs-bar {
+      display: flex;
+      border-bottom: 2.5px solid var(--ink);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs-bar::-webkit-scrollbar { display: none; }
+
+    .t-btn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      padding: 0.55rem 1.25rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2.5px;
+      color: var(--ink);
+      opacity: 0.32;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.22s, border-color 0.22s;
+      flex-shrink: 0;
+    }
+
+    .t-btn.on { opacity: 1; border-bottom-color: var(--orange); }
+
+    .t-pane { display: none; }
+    .t-pane.on { display: block; }
+
+    .dot-list { list-style: none; margin: 1.5rem 0; }
+
+    .dot-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.72rem 0;
+      border-bottom: 1px solid var(--concrete2);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--ink2);
+      line-height: 1.65;
+    }
+
+    .dot-list li::before {
+      content: '▸';
+      color: var(--orange);
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      margin-top: 4px;
+    }
+
+    .apply-wrap { margin-top: 2rem; }
+
+    .apply-inner {
+      background: var(--yellow);
+      border: 2.5px solid var(--ink);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+      padding: 1.5rem;
+    }
+
+    .apply-badge {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .apply-inner p {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      color: var(--ink);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      padding: 0.68rem 1.8rem;
+      border: 2.5px solid var(--ink);
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s, color 0.15s;
+    }
+
+    .btn:hover  { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--ink); }
+    .btn:active { transform: translate(1px, 1px); box-shadow: none; }
+
+    .btn-dark    { background: var(--ink); color: var(--yellow); }
+    .btn-dark:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    .btn-outline { background: transparent; color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--yellow); }
+
+    .btn-yellow { background: var(--yellow); color: var(--ink); }
+    .btn-yellow:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    /* ── ACCESS ── */
+    .access-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .map-ph {
+      background: var(--concrete2);
+      border: 2.5px solid var(--ink);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .map-ph-icon { font-size: 1.5rem; opacity: 0.35; }
+
+    .map-ph span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.3;
+    }
+
+    .ac-cards { display: flex; flex-direction: column; gap: 0.65rem; }
+
+    .ac-card {
+      background: var(--white);
+      border: 2.5px solid var(--ink);
+      border-left: 5px solid var(--ink);
+      padding: 0.9rem 1.1rem;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.12);
+    }
+
+    .ac-tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.28rem;
+    }
+
+    .ac-val {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    /* ── INSTAGRAM – dark strip ── */
+    #instagram {
+      background: var(--ink);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .ig-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(2.2rem, 9vw, 4rem);
+      color: var(--yellow);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .ig-body {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--white);
+      opacity: 0.55;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-bottom: 2rem;
+    }
+
+    .ig-cell {
+      aspect-ratio: 1;
+      background: #1d1b18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0.35;
+    }
+
+    .ig-handle {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.15rem;
+      color: var(--white);
+      opacity: 0.55;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 3rem 1.5rem 2.5rem;
+      border-top: 4px solid var(--yellow);
+    }
+
+    .ft-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      line-height: 0.85;
+    }
+
+    .ft-sub {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 0.88rem;
+      color: var(--yellow);
+      margin-top: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ft-nav {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ft-nav a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.35;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .ft-nav a:hover { opacity: 0.75; }
+
+    .ft-copy {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.6rem;
+      color: var(--white);
+      opacity: 0.2;
+      line-height: 1.8;
+    }
+
+    /* ── REVEAL ── */
+    .rev {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .rev.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (min-width: 768px) {
+      .sticker-board { grid-template-columns: repeat(4, 1fr); }
+      .access-wrap   { flex-direction: row; }
+      .map-ph        { flex: 1.2; height: auto; min-height: 200px; }
+      .ac-cards      { flex: 1; }
+    }
+
+    @media (min-width: 1024px) {
+      .section       { padding: 5.5rem 4rem; }
+      nav            { padding: 1.2rem 4rem; }
+      .hero-content  { padding: 1.5rem 4rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">STASH</a>
+  <ul class="nav-links">
+    <li><a href="#about">概要</a></li>
+    <li><a href="#audience">来場・出店</a></li>
+    <li><a href="#access">アクセス</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+  <div class="hamburger" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── MOBILE OVERLAY ── -->
+<div class="mob-overlay" id="mob">
+  <a href="#about"     onclick="closeMob()">概要</a>
+  <a href="#audience"  onclick="closeMob()">来場・出店</a>
+  <a href="#access"    onclick="closeMob()">アクセス</a>
+  <a href="#instagram" onclick="closeMob()">Instagram</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">// 一般社団法人 TMC presents</p>
+
+    <h1 class="hero-title">STASH</h1>
+
+    <p class="hero-tagline">— Don't Stop Diggin' —</p>
+
+    <!-- 5 stickers -->
+    <div class="sticker-row">
+      <div class="stk stk-date">
+        <span class="stk-label">Date</span>
+        <span class="stk-value">SEP 22–23</span>
+        <span class="stk-note">2026年9月22日・23日</span>
+      </div>
+      <div class="stk stk-venue">
+        <span class="stk-label">Venue</span>
+        <span class="stk-value">多摩センター</span>
+        <span class="stk-note">駅前歩道</span>
+      </div>
+      <div class="stk-free">FREE ENTRY</div>
+      <div class="stk stk-area">
+        <span class="stk-label">Area</span>
+        <span class="stk-value">西東京最大級</span>
+        <span class="stk-note">の古着フェス</span>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#about"    class="btn btn-dark">イベント詳細を見る</a>
+      <a href="#audience" class="btn btn-outline">出店者申込</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAUTION DIVIDER ── -->
+<div class="caution-wrap">
+  <div class="caution-stripe"></div>
+  <div class="caution-ticker">
+    <div class="ticker-track">
+      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+      <span class="ticker-seg">STASH&emsp;×&emsp;DON'T STOP DIGGIN'&emsp;×&emsp;2026.9.22–23&emsp;×&emsp;多摩センター&emsp;×&emsp;西東京最大級の古着フェス&emsp;×&emsp;FREE ENTRY&emsp;</span>
+    </div>
+  </div>
+  <div class="caution-stripe"></div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="section bg-wall" id="about">
+  <p class="s-label rev">// Event Info</p>
+  <h2 class="s-title rev d1">イベント概要</h2>
+
+  <div class="sticker-board rev d2">
+    <div class="board-stk">
+      <div class="bs-tag">Date</div>
+      <div class="bs-val">SEP 22–23</div>
+      <div class="bs-note">2026年9月22日(火)・23日(水)</div>
+    </div>
+    <div class="board-stk">
+      <div class="bs-tag">Venue</div>
+      <div class="bs-val">多摩センター</div>
+      <div class="bs-note">駅前歩道</div>
+    </div>
+    <div class="board-stk">
+      <div class="bs-tag">Entry</div>
+      <div class="bs-val">FREE</div>
+      <div class="bs-note">入場無料</div>
+    </div>
+    <div class="board-stk">
+      <div class="bs-tag">Host</div>
+      <div class="bs-val">TMC</div>
+      <div class="bs-note">一般社団法人<br>タイムマシーンカンパニー</div>
+    </div>
+  </div>
+
+  <ul class="feat-list rev d3">
+    <li class="feat-item">
+      <span class="feat-badge">VINTAGE</span>
+      <div class="feat-body">
+        <b>VINTAGE MARKET</b>
+        古着・ヴィンテージ・ストリートアパレルが集結。掘れば掘るほど出会いがある。
+      </div>
+    </li>
+    <li class="feat-item">
+      <span class="feat-badge">MUSIC</span>
+      <div class="feat-body">
+        <b>LIVE MUSIC × DJ</b>
+        ストリートの空気を後押しするDJセット・ライブパフォーマンス。
+      </div>
+    </li>
+    <li class="feat-item">
+      <span class="feat-badge">ART</span>
+      <div class="feat-body">
+        <b>GRAFFITI × ART</b>
+        グラフィティ・ストリートアート展示。カルチャーが空間を染める。
+      </div>
+    </li>
+    <li class="feat-item">
+      <span class="feat-badge">FOOD</span>
+      <div class="feat-body">
+        <b>FOOD × DRINK</b>
+        フード・ドリンク出店あり。一日中いられる場所。
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ── CAUTION THIN ── -->
+<div class="caution-wrap"><div class="caution-stripe"></div></div>
+
+<!-- ── AUDIENCE ── -->
+<section class="section bg-concrete" id="audience">
+  <div class="tabs-bar">
+    <button class="t-btn on" onclick="switchTab(this,'visitor')">🛍&nbsp;来場者の方へ</button>
+    <button class="t-btn"    onclick="switchTab(this,'vendor')">📦&nbsp;出店者募集</button>
+  </div>
+
+  <div class="t-pane on" id="tp-visitor">
+    <p class="s-label">// For Visitors</p>
+    <h2 class="s-title">来て・掘って<br>感じろ。</h2>
+    <ul class="dot-list">
+      <li>入場無料。誰でも気軽に来れる、西東京最大級の古着フェス。</li>
+      <li>古着・ヴィンテージ・ストリートブランドが一堂に会するマーケット。</li>
+      <li>多摩センター駅から徒歩1分。電車でアクセス抜群。</li>
+      <li>DJパフォーマンス・グラフィティ展示など、買い物を超えた体験。</li>
+      <li>最新情報・天候対応はInstagramでリアルタイム発信。</li>
+    </ul>
+    <a href="#instagram" class="btn btn-outline">Instagramで最新情報をフォロー&nbsp;→</a>
+  </div>
+
+  <div class="t-pane" id="tp-vendor">
+    <p class="s-label">// For Vendors</p>
+    <h2 class="s-title">出店者募集<br>受付中。</h2>
+    <ul class="dot-list">
+      <li>古着・ヴィンテージ・ストリートブランド・ハンドメイドアパレルなど歓迎。</li>
+      <li>西東京のカルチャーシーンをともに盛り上げるブランド・個人ショップを求む。</li>
+      <li>ブース料金・サイズ・詳細は申込フォームまたはDMにてお問い合わせ。</li>
+      <li>出店者は公式Instagram・WEBで紹介予定。露出機会にもつながる。</li>
+    </ul>
+    <div class="apply-wrap">
+      <div class="apply-inner">
+        <div class="apply-badge">// 出店者募集中</div>
+        <p>出店にご興味のある方は下記よりご応募ください。<br>内容確認後、担当よりご連絡いたします。<br>※定員に達し次第、募集を締め切ります。</p>
+        <a href="#" class="btn btn-dark">出店申込フォームへ&nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAUTION THIN ── -->
+<div class="caution-wrap"><div class="caution-stripe"></div></div>
+
+<!-- ── ACCESS ── -->
+<section class="section bg-wall rev" id="access">
+  <p class="s-label">// Location</p>
+  <h2 class="s-title">アクセス</h2>
+  <div class="access-wrap">
+    <div class="map-ph">
+      <div class="map-ph-icon">📍</div>
+      <span>Google Map</span>
+      <span>Placeholder</span>
+    </div>
+    <div class="ac-cards">
+      <div class="ac-card">
+        <div class="ac-tag">Venue</div>
+        <div class="ac-val">多摩センター駅前歩道<br>東京都多摩市落合</div>
+      </div>
+      <div class="ac-card">
+        <div class="ac-tag">Train</div>
+        <div class="ac-val">小田急多摩線 / 京王相模原線<br>多摩センター駅 徒歩約1分</div>
+      </div>
+      <div class="ac-card">
+        <div class="ac-tag">Schedule</div>
+        <div class="ac-val">2026年9月22日(火)・23日(水)<br>開催時間：[TBD]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM ── -->
+<section class="section rev" id="instagram">
+  <p class="s-label" style="text-align:center; color:var(--yellow);">// Follow Us</p>
+  <h2 class="ig-title">Stay<br>Plugged In.</h2>
+  <p class="ig-body">最新情報・出店者紹介・当日の熱量は<br>Instagramでリアルタイム発信中。</p>
+  <div class="ig-grid">
+    <div class="ig-cell">📷</div><div class="ig-cell">📷</div><div class="ig-cell">📷</div>
+    <div class="ig-cell">📷</div><div class="ig-cell">📷</div><div class="ig-cell">📷</div>
+  </div>
+  <div class="ig-handle">@stashdig</div>
+  <a href="https://instagram.com/stashdig" target="_blank" rel="noopener" class="btn btn-yellow">フォローする</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="ft-logo">STASH</div>
+  <div class="ft-sub">— Don't Stop Diggin' —</div>
+  <ul class="ft-nav">
+    <li><a href="#about">概要</a></li>
+    <li><a href="#audience">来場・出店</a></li>
+    <li><a href="#access">アクセス</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="https://stashdig.com" target="_blank" rel="noopener">stashdig.com</a></li>
+  </ul>
+  <div class="ft-copy">
+    © 2026 一般社団法人タイムマシーンカンパニー<br>
+    STASH — DON'T STOP DIGGIN' ／ 多摩センター駅前歩道 ／ 2026.9.22–23
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    var h = document.getElementById('ham'), m = document.getElementById('mob');
+    h.classList.toggle('open'); m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMob() {
+    document.getElementById('ham').classList.remove('open');
+    document.getElementById('mob').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function switchTab(btn, id) {
+    document.querySelectorAll('.t-btn').forEach(function(b){ b.classList.remove('on'); });
+    document.querySelectorAll('.t-pane').forEach(function(p){ p.classList.remove('on'); });
+    btn.classList.add('on');
+    document.getElementById('tp-' + id).classList.add('on');
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.rev').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
